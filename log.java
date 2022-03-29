@@ -3,8 +3,7 @@ import java.awt.event.*;
 
 public class log implements ActionListener {
     JFrame frame;
-    String emri = "ergi";
-    String ergi = "123";
+    String emri = "ergis";
     // Labels
     JLabel UserName = new JLabel("UserName");
     JLabel Pass = new JLabel("Password");
@@ -18,7 +17,7 @@ public class log implements ActionListener {
     //Converted TextField
     String UserNameText = UserName1.getText();
     //Converted PassField
-    char[] PassText = Pass1.getPassword();
+    String PassText = Pass1.getName();
 
     log() {
         window();
@@ -68,11 +67,10 @@ public class log implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == Login) {
-             
-        }    
-
-        else if (e.getSource() == Registration) {
+        if (UserName.equals(emri)) {
+           JOptionPane.showMessageDialog(null, "Erg");
+        } 
+        if (e.getSource() == Registration) {
             new registration();
         }
 
