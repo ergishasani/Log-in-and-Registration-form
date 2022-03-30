@@ -21,20 +21,21 @@ public class registration implements ActionListener {
     JPasswordField passwordConf1 = new JPasswordField();
     // Button
     JButton registration = new JButton("Confirm");
-    //Converted TextFields
+    // Converted TextFields
+    String passwordText = password1.getText();
+    String passwordConfText = passwordConf1.getText();
+    // Converted TextFields
     String emriText = emri1.getText();
     String mbiemriText = mbiemri1.getText();
     String usernameText = username1.getText();
     String dtlText = dtl1.getText();
-    //Converted PasswordField
-    char[] passwordText = password1.getPassword();
-    char[] passwordConfText = passwordConf1.getPassword();
 
     registration() {
         window();
         setLocation();
         addComponents();
         actionEvent();
+
     }
 
     public void window() {
@@ -48,7 +49,7 @@ public class registration implements ActionListener {
 
     public void setLocation() {
         // Labels
-        registrationForm.setBounds(135,10,100,20);
+        registrationForm.setBounds(135, 10, 100, 20);
         emri.setBounds(20, 20, 40, 70);
         mbiemri.setBounds(20, 70, 80, 70);
         username.setBounds(20, 120, 100, 70);
@@ -59,7 +60,7 @@ public class registration implements ActionListener {
         emri1.setBounds(180, 43, 165, 23);
         mbiemri1.setBounds(180, 93, 165, 23);
         username1.setBounds(180, 143, 165, 23);
-        dtl1.setBounds(180,193,165,23);
+        dtl1.setBounds(180, 193, 165, 23);
         password1.setBounds(180, 243, 165, 23);
         passwordConf1.setBounds(180, 293, 165, 23);
         // Button
@@ -94,9 +95,15 @@ public class registration implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == registration) {
-            if(passwordText != passwordConfText){
+
+            if (passwordText.isEmpty() || passwordConfText.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Ju lutemi te plotesoni te dhenat");
+            } else if (!passwordText.equals(passwordConfText)) {
                 JOptionPane.showMessageDialog(null, "Passwordet nuk jane te njejta");
+            } else if (passwordConfText.equals(passwordConfText)) {
+                JOptionPane.showMessageDialog(null, "Ergis");
             }
+
         }
     }
 }

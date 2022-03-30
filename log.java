@@ -3,7 +3,6 @@ import java.awt.event.*;
 
 public class log implements ActionListener {
     JFrame frame;
-    String emri = "ergis";
     // Labels
     JLabel UserName = new JLabel("UserName");
     JLabel Pass = new JLabel("Password");
@@ -14,10 +13,6 @@ public class log implements ActionListener {
     // Buttons
     JButton Login = new JButton("Log IN");
     JButton Registration = new JButton("Registration");
-    //Converted TextField
-    String UserNameText = UserName1.getText();
-    //Converted PassField
-    String PassText = Pass1.getName();
 
     log() {
         window();
@@ -67,13 +62,35 @@ public class log implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (UserName.equals(emri)) {
-           JOptionPane.showMessageDialog(null, "Erg");
-        } 
         if (e.getSource() == Registration) {
             new registration();
+            frame.setVisible(false);
         }
 
+        String User1 = "Ergis.h", User2 = "Devis.M";
+        String pass = "12345678";
+        // Converted TextField
+        String UserNameText = UserName1.getText();
+        // Converted PassField
+        String PassText = Pass1.getText();
+        if (UserNameText.equals(User1) && PassText.equals(pass)) {
+            new popup();
+            frame.setVisible(false);
+        }
+        if (UserNameText.equals(User2)) {
+            new popup2();
+            frame.setVisible(false);
+        }
+
+        else if (!UserNameText.equals(User1) || !PassText.equals(User1) || UserNameText.isEmpty()
+                || PassText.isEmpty()) {
+            if (UserNameText.isEmpty() || PassText.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Passwordi ose UserName eshte bosh");
+            } else if (UserNameText != User1 || PassText != pass) {
+                JOptionPane.showMessageDialog(null, "Passwordi ose UserName nuk eshte i sakte");
+            }
+
+        }
     }
 
     public static void main(String[] args) {
